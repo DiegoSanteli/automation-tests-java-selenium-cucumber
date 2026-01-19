@@ -62,17 +62,17 @@ O projeto automatiza um fluxo real de login em uma aplicação web de testes, co
 
 ## Estrutura do Projeto
 
-´´´
+``` text
 src
 └── test
-├── java
-│ ├── pages # Page Objects (interações com a página)
-│ ├── steps # Steps do Cucumber
-│ └── runners # Runner de execução dos testes
-└── resources
-└── features # Cenários BDD (.feature)
-´´´
-
+    ├── java
+    │   ├── pages        # Page Objects (interações com a página)
+    │   ├── steps        # Steps do Cucumber
+    │   └── runners      # Runner de execução dos testes
+    └── resources
+        └── features     # Cenários BDD (.feature)
+``` 
+        
 
 ### Boas Práticas Aplicadas
 
