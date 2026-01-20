@@ -6,7 +6,8 @@ import io.cucumber.java.pt.Então;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import pages.LoginPage;
-
+import io.cucumber.datatable.DataTable;
+import utils.ConfigReader;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,12 +40,19 @@ public class LoginSteps {
     }
 
 
-    @Quando("informar usuário e senha válidos")
-    public void informar_usuario_e_senha_validos() {
-        loginPage.preencherUsuario("tomsmith");
-        loginPage.preencherSenha("SuperSecretPassword!");
+    @Quando("informar os dados de login:")
+    public void informar_os_dados_de_login(DataTable dataTable) {
+
+        var dados = dataTable.asMaps(String.class, String.class);
+
+        String usuario = dados.get(0).get("usuario");
+        String senha = dados.get(0).get("senha");
+
+        loginPage.preencherUsuario(ConfigReader.get("usuario"));
+        loginPage.preencherSenha(ConfigReader.get("senha"));
         loginPage.clicarLogin();
     }
+
 
     @Então("o sistema deve permitir o acesso")
     public void o_sistema_deve_permitir_o_acesso() {
